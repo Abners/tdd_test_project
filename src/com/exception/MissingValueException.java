@@ -4,7 +4,7 @@ package com.exception;
  *
  * @author baoxing.peng
  *
- * @since 2015Äê7ÔÂ29ÈÕÏÂÎç4:37:46
+ * @since 2015å¹´7æœˆ29æ—¥ä¸‹åˆ4:37:46
  *
  * @version 1.0.0
  */
