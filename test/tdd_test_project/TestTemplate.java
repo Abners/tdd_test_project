@@ -50,6 +50,6 @@ public class TestTemplate {
 		template.put("two", "${three}");
 		template.put("three", "${two}");
 		template.evalute();
-		assertTemplateEvaluatesTo("${one},${two},${three}");
+		assertTemplateEvaluatesTo("${one},${three},${two}");
 	}
 }
