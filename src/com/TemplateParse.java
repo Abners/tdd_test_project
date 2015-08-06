@@ -50,5 +50,5 @@ public class TemplateParse {
 			segments.add(template.substring(index,matcher.start()));
 		}
 	}
-
 }
+
