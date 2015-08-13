@@ -8,6 +8,9 @@ import java.util.List;
 import org.junit.Test;
 
 import com.TemplateParse;
+import com.model.PlainText;
+import com.model.Segment;
+import com.model.Variable;
 
 public class TestTemplateParse {
 	@Test
@@ -35,5 +38,13 @@ public class TestTemplateParse {
 	public void parseMultipleVariables(){
 		List<String> segments = parse("${a}:${b}:dsflsdf${bd}");
 		assertSegments(segments, "${a}",":","${b}",":dsflsdf","${bd}");
+	}
+	
+	@Test
+	public void parsingTemplateIntoSegmentObjects()throws Exception{
+		TemplateParse p = new TemplateParse();
+		List<Segment> segments = p.parseSegments("a${b}c${d}");
+		assertSegments(segments,new PlainText("a"),new Variable("b"),
+				new PlainText("c"),new Variable("d"));
 	}
 }

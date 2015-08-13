@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.model.PlainText;
+import com.model.Segment;
+import com.model.Variable;
+
 public class TemplateParse {
 
 	public List<String> parse(String template) {
@@ -49,6 +53,24 @@ public class TemplateParse {
 		if(index!=matcher.start()){
 			segments.add(template.substring(index,matcher.start()));
 		}
+	}
+
+	public List<Segment> parseSegments(String template) {
+		List<Segment> segments = new ArrayList<>();
+		List<String> result = parse(template);
+		for(String value:result){
+			if(isVariable(value)){
+				String name = value.substring(2,value.length()-1);
+				segments.add(new Variable(name));
+			}else{
+				segments.add(new PlainText(value));
+			}
+		}
+		return segments;
+	}
+	
+	private boolean isVariable(String segment) {
+		return segment.startsWith("${")&&segment.endsWith("}");
 	}
 }
 
